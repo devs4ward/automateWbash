@@ -1,6 +1,7 @@
 <h1>Automate the boring stuff with bash</h1>
-Everyone likes when the computer does all the job right? 😁     
-Well, I am one of them too!     
+Everyone likes when the computer does all the job right? 😁                                                     
+
+    
 I've written these bash scripts to automate my boring stuff. :relieved:
 
 Here is what they are for:
