@@ -51,9 +51,14 @@ if [ -z "$mp4_file" ]; then
   
 else
 
-dest="/movies/$movie_name"
 
-movie_name=$(basename "$source/$(ls "$source" |grep *.mp4 | head -n 1)" | sed 's/\.[^.]*$//')
+
+first_mp4=$(ls "$source" | grep .mp4 | head -n 1)
+echo $first_mp4
+
+movie_name=$(basename "$source/$first_mp4" | cut -d'.' -f1)
+#black_panther
+dest="/movies"
 
 if [ -d "$dest" ] && [ -w "$dest" ]; then
 
@@ -87,7 +92,7 @@ do
     fi
     
     # Rename the .srt file
-    mv "$srt_file" "$dest/$new_name"
+    mv "$srt_file" "$dest/$movie_name/$new_name"
     
     # Increment the counter
     i=$((i+1))
