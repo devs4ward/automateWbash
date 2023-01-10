@@ -17,6 +17,10 @@ For more info, see the script.
 
 debs.sh - download all deb packages in dir and remove them because they are no longer needed.
 
+persistant-state.sh - this script checks whether all data is sent and written successfuly     
+Useful if you transfer larger files to remote storage (usb drives) and want to make sure that drive is in persistant state and can be ejected.    
+If file manager (e.g. nautilus) is not accurated (shows 100% but transfer is not over), simply run this script, and whait till you get the output, you can safely unmount and eject usb drive.
+
 To use these scripts on linux(using apt) , follow these steps:    
 
 install git: sudo apt install git   
