@@ -21,19 +21,33 @@ persistant-state.sh - this script checks whether all data is sent and written su
 Useful if you transfer larger files to remote storage (usb drives) and want to make sure that drive is in persistant state and can be ejected.    
 If file manager (e.g. nautilus) is not accurated (shows 100% but transfer is not over), simply run this script, and whait till you get the output, you can safely unmount and eject usb drive.
 
-To use these scripts on linux(using apt) , follow these steps:    
+<h3>To use these scripts on linux, follow these steps:    
+</h3>
 
-install git: sudo apt install git   
-clone repo: git clone https://github.com/devs4ward/automateWbash    
-change dir: cd automateWbash    
+   
+```       
+sudo apt install git
+```             
+You shoud get the output of following command:     
+```  
+git --version       
+```
+```git version 2.37.2```  
+Next, run this: 
+```     
+git clone https://github.com/devs4ward/automateWbash    
+```
+```
+cd automateWbash    
+```
+make all scripts executable:     
+```   
+chmod +x *.sh
+```
 
-edit scripts to match your needs:nano script_name.sh    
-finally run the script: ./script_name.sh     
+list all the scripts: ```ls```  
+finally run desired script: ``` ./script_name.sh ```
 
-
-if didn't work ,check if scripts have execute permissions       
-if not:
-chmod +x *.sh --> this will make all bash scripts executable in current directory 
 
 <h2>Contribute</h2>         
 Feel free to contribute,if you have any improvements or have other automation scripts, I would be happy to see them.
