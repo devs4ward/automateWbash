@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /
+
 # Run the sync command
 sync
 
