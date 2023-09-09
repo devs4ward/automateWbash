@@ -46,31 +46,29 @@ fi
 #move .mp4 (if not already) from /downloads to /movies in the (.mp4 file name)dir
 #and check if there is a dir with the same name already and
 #add the new dir to destination for .srt files (e.g. /movies/new_movie)
-mp4_file=$(find "$source" -type f -name "*.mp4")
+video_file=$(find "$source" -type f \( -name "*.mp4" -o -name "*.mkv" \))
 
-if [ -z "$mp4_file" ]; then
-    echo "No video files :)"
+
+if [ -z "$video_file" ]; then
+    echo "No video file :)"
     dest=$1
-  
+    
 else
 
+echo $video_file
 
-
-first_mp4=$(ls "$source" | grep .mp4 | head -n 1)
-echo $first_mp4
-
-movie_name=$(basename "$source/$first_mp4" | cut -d'.' -f1)
+movie_name=$(basename "$video_file" | sed -E 's/\.(mp4|mkv)$//')
 #black_panther
 dest="/movies"
 
 if [ -d "$dest" ] && [ -w "$dest" ]; then
 
-  mkdir "$dest"/"$movie_name"
-  mv "$mp4_file" "$dest/$movie_name"
+    mkdir "$dest"/"$movie_name"
+    mv "$video_file" "$dest/$movie_name"
 else
 
-  echo "Error: Destination directory does not exist or is not writable"
-  exit 1
+    echo "Error: Destination directory does not exist or is not writable"
+    exit 1
 fi
 
 
@@ -90,18 +88,18 @@ do
 
 #if there is no .mp4 file,use positional argument(S1) as destination
 
-    if [ -z "$mp4_file" ]; then
-      echo "Moving only .srts"
+    if [ -z "$video_file" ]; then
+    echo "Moving only .srts"
 #------------------------------------#
-      # Construct the new file name
+    # Construct the new file name
     if [ $i -eq 1 ]; then
         new_name="$movie_name.srt"
     else
         new_name="$movie_name($i).srt"
         echo $new_name
     fi
-      # Rename the .srt file
-    mv "$srt_file" "$dest$new_name"
+    # Rename the .srt file
+    mv "$srt_file" "$dest/$movie_name/$new_name"
 
 
 #-------------------------------------#
@@ -116,7 +114,7 @@ do
     else
         new_name="$movie_name($i).srt"
         echo $new_name
-      
+    
     fi
     
     # Rename the .srt file
@@ -124,7 +122,6 @@ do
     fi
 
 #-------------------------------------#
-
 
     # Increment the counter
     i=$((i+1))
