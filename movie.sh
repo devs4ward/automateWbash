@@ -18,11 +18,11 @@
 #1 - same as first way but it only handles .srt files
 #2 - useful if you already have movie in its own dir and you want to add .srt files
 ##IF THAT'S THE CASE, THEN BEFORE RUNNING THE SCRIPT YOU HAVE TO PROVIDED DESTINATION ARGUMENT (WHERE .SRT FILES WILL BE MOVED)##
-###e.g. /path/to/script/complete.sh /home/username/Videos/target_movie.mp4 
+###e.g. /path/to/script/movie.sh /home/username/Videos/target_movie.mp4 
 
 #!/bin/bash
 
-source="/home/pleasework/Downloads"
+source="/home/$USER/Downloads"
 
 #extract and delete all zip files if any
 
